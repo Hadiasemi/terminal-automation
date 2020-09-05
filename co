@@ -1,0 +1,4 @@
+#!/bin/bash
+name=${1?Error: no name given}
+python3 -m coverage run $name
+python3 -m coverage report -m

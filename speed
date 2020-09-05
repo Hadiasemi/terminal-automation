@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+from speedtest import Speedtest
+st=Speedtest()
+st.get_best_server()
+print("Download: ",round(st.download()/(10**6),2)," Mbps")
+print("  Upload:  ", round(st.upload()/(10**6),2)," Mbps")
