@@ -10,6 +10,7 @@ help(){
 
 repo(){
   # create a repo to host a new project on GitHub
+  touch README.md
   git init
   git add .
   git commit -m "And so, it begins."
