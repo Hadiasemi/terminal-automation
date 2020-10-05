@@ -15,7 +15,7 @@ tailz=" --- "
 
 fileext=".asm"
 
-make
+javac *.java
 
 for i in `seq $1 $2`;
 do
