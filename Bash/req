@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mkdir /home/hasemi/CPE357/Exercise$1
+cd /home/hasemi/CPE357/Exercise$1
+cp ~kmammen-grader/evaluations/W21/357/Exercise$1/requirements .
+cp ~kmammen-grader/evaluations/W21/357/Exercise$1/Makefile .

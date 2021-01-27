@@ -1,0 +1,87 @@
+#!/bin/bash
+
+case $1 in
+
+   e)lab="Exercise"
+   ;;
+
+   p)lab="Project"
+   ;;
+   *)echo "Usage:tt [option  number]" && exit
+   ;;
+esac
+
+mkdir -p /home/hasemi/CPE357/$lab$2
+cd /home/hasemi/CPE357/$lab$2
+cp ~kmammen-grader/evaluations/W21/357/$lab$2/requirements .
+cp ~kmammen-grader/evaluations/W21/357/$lab$2/Makefile . 
+
+echo "Core: $(cat ~kmammen-grader/evaluations/W21/357/$lab$2/tests/core/value)">>description
+count=1
+for f in ~kmammen-grader/evaluations/W21/357/$lab$2/tests/core/*; do 
+   if [ -d "$f"  ]; then
+         echo 
+         echo "Test $count:"
+         echo
+         cat $f/description
+         echo "***************************************************************" >>description
+         let count++
+   fi
+done>>description
+
+echo >>description
+echo "#############################################################" >>description
+
+echo >>description
+echo "Featue: ">>description
+
+COUNTER=1
+for f in ~kmammen-grader/evaluations/W21/357/$lab$2/tests/feature/*; do 
+   if [ -d "$f"  ]; then
+         echo 
+         echo "Test $COUNTER:"
+         echo "value: $(cat $f/value)"
+         echo
+         cat $f/description
+         echo "***************************************************************" >>description
+         let COUNTER++
+   fi
+done>>description
+
+
+echo "CPU: ">>performance
+count=1
+for f in ~kmammen-grader/evaluations/W21/357/$lab$2/cpu/*; do 
+   if [ -d "$f"  ]; then
+         echo 
+         echo "Test $count:"
+         echo "value: $(cat $f/value)"
+         echo
+         cat $f/description
+         cat $f/expect.cpu
+         echo
+         echo "***************************************************************"
+         let count++
+   fi
+done>>performance
+
+
+
+
+echo "#############################################################" >>performance
+
+echo "Heap: ">>performance
+count=1
+for f in ~kmammen-grader/evaluations/W21/357/$lab$2/heap/*; do 
+   if [ -d "$f"  ]; then
+         echo 
+         echo "Test $count:"
+         echo "value: $(cat $f/value)"
+         echo
+         cat $f/description
+         cat $f/expect.heap
+         echo
+         echo "***************************************************************"
+         let count++
+   fi
+done>>performance
