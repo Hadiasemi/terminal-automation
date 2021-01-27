@@ -1,7 +1,0 @@
-#!/bin/bash  
-my_function () {
-          javac *.java
-          read -p 'Test file name: ' file
-          java org.junit.runner.JUnitCore $file
-  }
-      my_function
