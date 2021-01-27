@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+# make file
+with open("binary.bin", "wb") as newFile:
+   for byte in range(0,256):
+      newFile.write(byte.to_bytes(1, byteorder='big'))
